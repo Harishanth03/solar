@@ -62,7 +62,7 @@ export default function HeroSlider() {
   }, []);
 
   return (
-    <section className="relative h-[100dvh] w-screen overflow-hidden bg-[#0a0f1e]">
+    <section className="relative h-dvh w-screen overflow-hidden bg-[#0a0f1e]">
       {slides.map((slide, index) => {
         const isActive = index === activeIndex;
 
@@ -77,13 +77,13 @@ export default function HeroSlider() {
             {/* Image Section */}
             <div className="relative h-[50vh] w-full shrink-0 overflow-hidden md:absolute md:inset-0 md:h-full">
               <div
-                className={`absolute inset-0 bg-center bg-cover bg-no-repeat transition-transform duration-[10000ms] ease-out ${
+                className={`absolute inset-0 bg-center bg-cover bg-no-repeat transition-transform duration-10000 ease-out ${
                   isActive ? "scale-105" : "scale-100"
                 }`}
                 style={{ backgroundImage: `url(${slide.image})` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-transparent md:hidden" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-[#0a0f1e]/40 to-transparent md:hidden" />
+              <div className="absolute inset-0 bg-linear-to-t from-[#0a0f1e] via-transparent md:hidden" />
+              <div className="absolute inset-0 bg-linear-to-t from-[#0a0f1e] via-[#0a0f1e]/40 to-transparent md:hidden" />
               <div className="hidden md:block absolute inset-0 bg-black/50" />
             </div>
 
