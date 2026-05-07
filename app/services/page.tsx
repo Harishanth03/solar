@@ -21,90 +21,90 @@ import {
 const services = [
   {
     icon: Home,
-    title: "Installation Résidentielle",
+    title: "Residential Installation",
     description:
-      "Transformez votre maison en centrale solaire. Nos experts conçoivent un système adapté à votre toiture et vos besoins en énergie.",
+      "Turn your home into a solar power station. Our experts design a system tailored to your roof and your specific energy needs.",
   },
   {
     icon: Building2,
-    title: "Installation Commerciale",
+    title: "Commercial Installation",
     description:
-      "Réduisez vos coûts d'exploitation avec des installations solaires à grande échelle conçues pour les entreprises et industries.",
+      "Reduce your operating costs with large-scale solar installations designed for businesses and industries of all sizes.",
   },
   {
     icon: Wrench,
-    title: "Maintenance & Réparation",
+    title: "Maintenance & Repairs",
     description:
-      "Gardez vos panneaux à leur rendement optimal grâce à nos services d'entretien régulier et de réparation rapide.",
+      "Keep your panels at peak performance with our regular maintenance schedules and rapid repair response teams.",
   },
   {
     icon: BarChart3,
-    title: "Audit Énergétique",
+    title: "Energy Audit",
     description:
-      "Obtenez une analyse complète et gratuite de votre consommation d'énergie pour maximiser vos économies solaires.",
+      "Get a complete, no-cost analysis of your energy consumption and find out exactly how much you can save with solar.",
   },
   {
     icon: Battery,
-    title: "Stockage par Batterie",
+    title: "Battery Storage",
     description:
-      "Stockez l'énergie solaire produite le jour pour l'utiliser la nuit ou lors des pannes de courant.",
+      "Store the solar energy produced during the day and use it at night or whenever the grid goes down.",
   },
   {
     icon: Zap,
-    title: "Raccordement au Réseau",
+    title: "Grid Connection",
     description:
-      "Nous gérons tous les permis, inspections et raccordements au réseau Hydro-Québec pour vous.",
+      "We manage all permits, inspections, and grid connections on your behalf — completely hassle-free.",
   },
 ];
 
 const steps = [
   {
     number: "01",
-    title: "Consultation Gratuite",
-    description: "Échange avec nos experts pour définir vos besoins et objectifs énergétiques.",
+    title: "Free Consultation",
+    description: "Chat with our experts to define your energy needs and goals.",
   },
   {
     number: "02",
-    title: "Évaluation du Site",
-    description: "Visite technique de votre propriété pour analyser la toiture et l'ensoleillement.",
+    title: "Site Assessment",
+    description: "A technical visit to evaluate your roof, shading, and solar potential.",
   },
   {
     number: "03",
-    title: "Proposition Personnalisée",
-    description: "Recevez un devis détaillé avec le retour sur investissement calculé.",
+    title: "Custom Proposal",
+    description: "Receive a detailed quote with a calculated return on investment.",
   },
   {
     number: "04",
     title: "Installation",
-    description: "Notre équipe certifiée installe votre système en 3 à 5 jours ouvrables.",
+    description: "Our certified team installs your system in 3 to 5 business days.",
   },
   {
     number: "05",
-    title: "Activation & Suivi",
-    description: "Mise en service, formation et monitoring continu de votre production.",
+    title: "Activation & Monitoring",
+    description: "System commissioning, training, and continuous production monitoring.",
   },
 ];
 
 const whyUs = [
   {
     icon: Shield,
-    label: "RBQ Certifié",
-    description: "Entrepreneurs certifiés par la Régie du bâtiment du Québec.",
+    label: "RBQ Certified",
+    description: "Licensed contractors certified by the Régie du bâtiment du Québec.",
   },
   {
     icon: CheckCircle2,
-    label: "Garantie 10 ans",
-    description: "Garantie complète sur la main-d'œuvre et les équipements installés.",
+    label: "10-Year Warranty",
+    description: "Full warranty covering both labour and all installed equipment.",
   },
   {
     icon: MapPin,
-    label: "Équipe Locale Québec",
-    description: "Une équipe québécoise qui connaît le climat et les programmes locaux.",
+    label: "Local Quebec Team",
+    description: "A local team that understands the climate and regional incentive programs.",
   },
   {
     icon: Clock,
-    label: "Installation 3–5 Jours",
-    description: "Du premier coup de perceuse à l'activation, en moins d'une semaine.",
+    label: "3–5 Day Installation",
+    description: "From the first drill to system activation, done in under a week.",
   },
 ];
 
@@ -142,7 +142,7 @@ export default function ServicesPage() {
           animate="show"
           className="flex items-center gap-2 text-xs text-white/40 mb-5"
         >
-          <Link href="/" className="hover:text-orange-400 transition-colors">Accueil</Link>
+          <Link href="/" className="hover:text-orange-400 transition-colors">Home</Link>
           <ChevronRight className="w-3 h-3" />
           <span className="text-white/60">Services</span>
         </motion.div>
@@ -155,7 +155,7 @@ export default function ServicesPage() {
           custom={1}
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400 text-xs font-medium mb-5 tracking-widest uppercase"
         >
-          Nos Services
+          Our Services
         </motion.span>
 
         {/* Heading */}
@@ -167,9 +167,9 @@ export default function ServicesPage() {
           className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight max-w-3xl mb-4"
           style={{ fontFamily: "var(--font-syne)" }}
         >
-          Des Solutions Solaires{" "}
+          Solar Solutions{" "}
           <span className="bg-linear-to-r from-orange-400 to-amber-300 bg-clip-text text-transparent">
-            Sur Mesure
+            Built for You
           </span>
         </motion.h1>
 
@@ -181,8 +181,8 @@ export default function ServicesPage() {
           custom={3}
           className="text-slate-400 max-w-xl text-base sm:text-lg leading-relaxed"
         >
-          De l'audit énergétique à l'activation, nous vous accompagnons à chaque
-          étape vers une énergie propre et rentable.
+          From energy audits to system activation, we guide you every step
+          of the way toward clean, reliable, and affordable energy.
         </motion.p>
       </section>
 
@@ -199,7 +199,7 @@ export default function ServicesPage() {
             className="text-3xl sm:text-4xl font-bold text-white"
             style={{ fontFamily: "var(--font-syne)" }}
           >
-            Ce que nous offrons
+            What We Offer
           </h2>
           <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-linear-to-r from-orange-500 to-amber-400" />
         </motion.div>
@@ -237,7 +237,7 @@ export default function ServicesPage() {
 
                 {/* Link */}
                 <span className="text-orange-400 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all duration-200">
-                  En savoir plus <ChevronRight className="w-4 h-4" />
+                  Learn more <ChevronRight className="w-4 h-4" />
                 </span>
               </motion.div>
             );
@@ -259,10 +259,10 @@ export default function ServicesPage() {
               className="text-3xl sm:text-4xl font-bold text-white"
               style={{ fontFamily: "var(--font-syne)" }}
             >
-              Comment ça fonctionne
+              How It Works
             </h2>
             <p className="text-slate-400 mt-3 max-w-xl mx-auto text-sm sm:text-base">
-              Un processus simple et transparent, du premier contact jusqu'à votre première facture réduite.
+              A simple, transparent process — from your first call to your first reduced energy bill.
             </p>
             <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-linear-to-r from-orange-500 to-amber-400" />
           </motion.div>
@@ -331,7 +331,7 @@ export default function ServicesPage() {
               className="text-3xl sm:text-4xl font-bold text-white"
               style={{ fontFamily: "var(--font-syne)" }}
             >
-              Pourquoi nous choisir
+              Why Choose Us
             </h2>
             <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-linear-to-r from-orange-500 to-amber-400" />
           </motion.div>
@@ -385,14 +385,14 @@ export default function ServicesPage() {
             className="relative text-3xl sm:text-4xl font-bold text-white mb-4"
             style={{ fontFamily: "var(--font-syne)" }}
           >
-            Prêt à passer à{" "}
+            Ready to Switch to{" "}
             <span className="bg-linear-to-r from-orange-400 to-amber-300 bg-clip-text text-transparent">
-              l'énergie solaire?
+              Solar Energy?
             </span>
           </h2>
           <p className="relative text-slate-400 mb-8 text-base sm:text-lg max-w-xl mx-auto">
-            Obtenez votre soumission gratuite aujourd'hui et découvrez combien vous
-            pouvez économiser chaque année.
+            Get your free quote today and discover exactly how much you
+            can save every year with solar.
           </p>
 
           <div className="relative flex flex-wrap justify-center gap-4">
@@ -400,13 +400,13 @@ export default function ServicesPage() {
               href="/contact"
               className="bg-orange-500 hover:bg-orange-400 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-orange-500/25 hover:shadow-orange-500/50"
             >
-              Demander une soumission
+              Request a Quote
             </Link>
             <Link
               href="/contact"
               className="border border-white/20 hover:border-white/40 bg-white/5 hover:bg-white/10 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300"
             >
-              Nous contacter
+              Contact Us
             </Link>
           </div>
         </motion.div>

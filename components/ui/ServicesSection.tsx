@@ -18,54 +18,54 @@ import {
 const services = [
   {
     icon: Home,
-    title: "Installation Résidentielle",
+    title: "Residential Installation",
     description:
-      "Transformez votre maison en centrale solaire. Nos experts conçoivent un système adapté à votre toiture et vos besoins énergétiques.",
+      "Turn your home into a solar power station. Our experts design a system tailored to your roof and your energy needs.",
     gradient: "from-orange-500/20 to-amber-400/5",
     border: "hover:border-orange-500/50",
     glow: "bg-orange-500/10",
   },
   {
     icon: Building2,
-    title: "Installation Commerciale",
+    title: "Commercial Installation",
     description:
-      "Réduisez vos coûts d'exploitation avec des installations solaires à grande échelle, conçues pour les entreprises et industries.",
+      "Reduce your operating costs with large-scale solar installations designed for businesses and industrial facilities.",
     gradient: "from-sky-500/20 to-blue-400/5",
     border: "hover:border-sky-500/50",
     glow: "bg-sky-500/10",
   },
   {
     icon: Wrench,
-    title: "Maintenance & Réparation",
+    title: "Maintenance & Repairs",
     description:
-      "Gardez vos panneaux à leur rendement optimal grâce à nos services d'entretien régulier et de réparation rapide.",
+      "Keep your panels performing at peak efficiency with our scheduled maintenance and fast-response repair services.",
     gradient: "from-emerald-500/20 to-green-400/5",
     border: "hover:border-emerald-500/50",
     glow: "bg-emerald-500/10",
   },
   {
     icon: BarChart3,
-    title: "Audit Énergétique",
+    title: "Energy Audit",
     description:
-      "Obtenez une analyse complète et gratuite de votre consommation d'énergie pour maximiser vos économies solaires.",
+      "Get a comprehensive, no-cost analysis of your energy consumption and discover how much you can save with solar.",
     gradient: "from-violet-500/20 to-purple-400/5",
     border: "hover:border-violet-500/50",
     glow: "bg-violet-500/10",
   },
   {
     icon: Battery,
-    title: "Stockage par Batterie",
+    title: "Battery Storage",
     description:
-      "Stockez l'énergie solaire produite le jour pour l'utiliser la nuit ou lors des pannes de courant.",
+      "Store the solar energy generated during the day and use it at night or during power outages.",
     gradient: "from-amber-500/20 to-yellow-400/5",
     border: "hover:border-amber-500/50",
     glow: "bg-amber-500/10",
   },
   {
     icon: Zap,
-    title: "Raccordement au Réseau",
+    title: "Grid Connection",
     description:
-      "Nous gérons tous les permis, inspections et raccordements au réseau pour vous, de A à Z.",
+      "We handle all permits, inspections, and grid connections from start to finish — completely hassle-free.",
     gradient: "from-rose-500/20 to-pink-400/5",
     border: "hover:border-rose-500/50",
     glow: "bg-rose-500/10",
@@ -135,19 +135,19 @@ export default function ServicesSection() {
           {/* Badge */}
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400 text-xs font-medium mb-5 tracking-widest uppercase">
             <Zap className="w-3 h-3" />
-            Nos Services
+            Our Services
           </span>
 
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-tight">
-            Des Solutions{" "}
+            Tailored Solar{" "}
             <span className="bg-linear-to-r from-orange-400 to-amber-300 bg-clip-text text-transparent">
-              Sur Mesure
+              Solutions
             </span>
           </h2>
 
           <p className="text-slate-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
-            De l'audit énergétique à l'activation, nous vous accompagnons à
-            chaque étape vers une énergie propre et rentable.
+            From energy audits to full activation, we guide you every step of
+            the way toward clean, affordable, and sustainable energy.
           </p>
 
           {/* Decorative line */}
@@ -202,7 +202,7 @@ export default function ServicesSection() {
 
                 {/* CTA link */}
                 <span className="relative z-10 inline-flex items-center gap-1.5 text-orange-400 text-sm font-semibold group-hover:gap-2.5 transition-all duration-200">
-                  En savoir plus
+                  Learn more
                   <ArrowRight className="w-4 h-4" />
                 </span>
               </motion.div>
@@ -221,7 +221,7 @@ export default function ServicesSection() {
             href="/services"
             className="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-amber-400 px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 hover:shadow-orange-500/50 hover:scale-105 transition-all duration-300"
           >
-            Voir tous nos services
+            View All Services
             <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>
