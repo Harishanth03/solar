@@ -17,10 +17,10 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Accueil", href: "/" },
+    { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
-    { name: "Projets", href: "/projets" },
-    { name: "À propos", href: "/a-propos" },
+    { name: "Projects", href: "/projects" },
+    { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -69,14 +69,10 @@ export default function Navbar() {
             {/* CTA Button */}
             <div className="hidden md:block">
               <Link
-                href="/devis"
-                className="relative group overflow-hidden px-6 py-2.5 rounded-full font-medium text-sm transition-all duration-300"
+                href="/quote"
+                className="inline-flex rounded-full bg-linear-to-r from-[#F97316] to-[#FB923C] px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/35"
               >
-                <div className="absolute inset-0 bg-linear-to-r from-[#F97316] to-[#FB923C] rounded-full"></div>
-                <div className="absolute inset-px bg-[#0a0f1e] rounded-full group-hover:opacity-0 transition duration-300"></div>
-                <span className="relative text-white group-hover:text-white">
-                  Devis gratuit
-                </span>
+                Free Quote
               </Link>
             </div>
 
@@ -137,11 +133,11 @@ export default function Navbar() {
             ))}
             <div className="h-px bg-linear-to-r from-transparent via-white/20 to-transparent my-3"></div>
             <Link
-              href="/devis"
+              href="/quote"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="mt-2 text-center px-4 py-3 rounded-full bg-linear-to-r from-[#F97316] to-[#FB923C] text-white font-semibold text-sm hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300"
+              className="mt-2 text-center px-4 py-3 rounded-full bg-linear-to-r from-[#F97316] to-[#FB923C] text-white font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/35"
             >
-              free quote
+              Free Quote
             </Link>
           </div>
         </div>
