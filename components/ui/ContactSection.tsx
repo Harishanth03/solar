@@ -62,7 +62,7 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email Us",
-    value: "info@solarstar.lk",
+    value: "info@solarstarenergy.ca",
     accent: "from-emerald-500/20 to-green-400/5",
     iconColor: "text-emerald-400",
   },
@@ -141,8 +141,8 @@ export default function ContactSection() {
     >
       {/* ── Background ambient glows ── */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 right-1/4 h-[500px] w-[500px] rounded-full bg-orange-500/5 blur-3xl" />
-        <div className="absolute bottom-0 left-1/4 h-[400px] w-[400px] rounded-full bg-sky-500/5 blur-3xl" />
+        <div className="absolute -top-40 right-1/4 h-125 w-125 rounded-full bg-orange-500/5 blur-3xl" />
+        <div className="absolute bottom-0 left-1/4 h-100 w-100 rounded-full bg-sky-500/5 blur-3xl" />
         {/* Subtle grid overlay */}
         <div
           className="absolute inset-0 opacity-[0.03]"
