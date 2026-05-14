@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
 type ContactRequestBody = {
@@ -31,23 +31,15 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
       return NextResponse.json(
-        { error: "SMTP credentials are not configured." },
+        { error: "Email service is not configured." },
         { status: 500 }
       );
     }
 
-    const transporter = nodemailer.createTransport({
-      host: "smtp.office365.com",
-      port: 587,
-      secure: false,
-      tls: { ciphers: "SSLv3" },
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
+    const resend = new Resend(apiKey);
 
     const html = `
       <div style="font-family: Arial, sans-serif; color: #1f2937; line-height: 1.5;">
@@ -75,34 +67,26 @@ export async function POST(request: Request) {
       </div>
     `;
 
-    await transporter.sendMail({
-      from: process.env.SMTP_USER,
+    const { error } = await resend.emails.send({
+      from: "info@solarstarenergy.ca",
       to: "info@solarstarenergy.ca",
       replyTo: email,
-      subject: `New contact form submission from ${name}`,
+      subject: `New Contact Form Submission from ${name}`,
       html,
     });
 
-    return NextResponse.json({ success: true });
-  } catch (error) {
-    const message =
-      error instanceof Error ? error.message : "Failed to send message.";
-
-    const smtpAuthDisabled =
-      message.includes("SmtpClientAuthentication is disabled") ||
-      message.includes("smtp_auth_disabled") ||
-      /535\s+5\.7\.139/i.test(message);
-
-    if (smtpAuthDisabled) {
-      return NextResponse.json(
-        {
-          error:
-            "Email could not be sent because SMTP authentication is disabled for your Microsoft 365 organization. A Microsoft 365 admin must enable SMTP AUTH for the tenant or this mailbox (see https://aka.ms/smtp_auth_disabled).",
-        },
-        { status: 500 }
-      );
+    if (error) {
+      const errMsg =
+        typeof error === "object" && error !== null && "message" in error
+          ? String((error as { message: unknown }).message)
+          : "Failed to send email.";
+      return NextResponse.json({ error: errMsg }, { status: 500 });
     }
 
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    const message =
+      err instanceof Error ? err.message : "Failed to send message.";
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
