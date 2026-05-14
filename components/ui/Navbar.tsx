@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { Menu, X, Sun } from "lucide-react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export default function Navbar() {
+  const { t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -16,12 +18,15 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Services", href: "/services" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
-  ];
+  const navLinks = useMemo(
+    () => [
+      { name: t("nav.home"), href: "/" },
+      { name: t("nav.services"), href: "/services" },
+      { name: t("nav.about"), href: "/about" },
+      { name: t("nav.contact"), href: "/contact" },
+    ],
+    [t],
+  );
 
   return (
     <>
@@ -46,7 +51,8 @@ export default function Navbar() {
                 </div>
               </div>
               <span className="text-xl font-semibold tracking-tight bg-linear-to-r from-white to-white/80 bg-clip-text text-transparent">
-                Solar<span className="text-[#F97316]">Star</span>Energy
+                Solar<span className="text-[#F97316]">Star</span>{" "}
+                <span className="text-white/90">Énergie</span>
               </span>
             </Link>
 
@@ -55,7 +61,7 @@ export default function Navbar() {
               <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
                 {navLinks.map((link) => (
                   <Link
-                    key={link.name}
+                    key={link.href}
                     href={link.href}
                     className="relative px-4 py-2 text-sm font-medium text-white/70 hover:text-white transition-all duration-300 rounded-full hover:bg-white/10"
                   >
@@ -68,10 +74,10 @@ export default function Navbar() {
             {/* CTA Button */}
             <div className="hidden md:block">
               <Link
-                href="/quote"
+                href="/contact"
                 className="inline-flex rounded-full bg-linear-to-r from-[#F97316] to-[#FB923C] px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/35"
               >
-                Free Quote
+                {t("nav.quote")}
               </Link>
             </div>
 
@@ -119,7 +125,7 @@ export default function Navbar() {
           <div className="flex flex-col gap-2">
             {navLinks.map((link, idx) => (
               <Link
-                key={link.name}
+                key={link.href}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-200 text-center font-medium"
@@ -132,11 +138,11 @@ export default function Navbar() {
             ))}
             <div className="h-px bg-linear-to-r from-transparent via-white/20 to-transparent my-3"></div>
             <Link
-              href="/quote"
+              href="/contact"
               onClick={() => setIsMobileMenuOpen(false)}
               className="mt-2 text-center px-4 py-3 rounded-full bg-linear-to-r from-[#F97316] to-[#FB923C] text-white font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/35"
             >
-              Free Quote
+              {t("nav.quote")}
             </Link>
           </div>
         </div>

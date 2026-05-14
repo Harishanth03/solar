@@ -26,7 +26,7 @@ export async function POST(request: Request) {
 
     if (!name || !email || !message) {
       return NextResponse.json(
-        { error: "Name, email, and message are required." },
+        { error: "Le nom, le courriel et le message sont obligatoires." },
         { status: 400 }
       );
     }
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
       return NextResponse.json(
-        { error: "Email service is not configured." },
+        { error: "Le service de courriel n’est pas configuré." },
         { status: 500 }
       );
     }
@@ -43,20 +43,20 @@ export async function POST(request: Request) {
 
     const html = `
       <div style="font-family: Arial, sans-serif; color: #1f2937; line-height: 1.5;">
-        <h2 style="margin: 0 0 16px;">New Contact Form Submission</h2>
+        <h2 style="margin: 0 0 16px;">Nouveau message — formulaire de contact</h2>
         <table style="border-collapse: collapse; width: 100%; max-width: 720px;">
           <tbody>
             <tr>
-              <th style="text-align: left; padding: 10px; border: 1px solid #e5e7eb; background: #f9fafb; width: 140px;">Name</th>
+              <th style="text-align: left; padding: 10px; border: 1px solid #e5e7eb; background: #f9fafb; width: 140px;">Nom</th>
               <td style="padding: 10px; border: 1px solid #e5e7eb;">${escapeHtml(name)}</td>
             </tr>
             <tr>
-              <th style="text-align: left; padding: 10px; border: 1px solid #e5e7eb; background: #f9fafb;">Email</th>
+              <th style="text-align: left; padding: 10px; border: 1px solid #e5e7eb; background: #f9fafb;">Courriel</th>
               <td style="padding: 10px; border: 1px solid #e5e7eb;">${escapeHtml(email)}</td>
             </tr>
             <tr>
-              <th style="text-align: left; padding: 10px; border: 1px solid #e5e7eb; background: #f9fafb;">Phone</th>
-              <td style="padding: 10px; border: 1px solid #e5e7eb;">${escapeHtml(phone || "N/A")}</td>
+              <th style="text-align: left; padding: 10px; border: 1px solid #e5e7eb; background: #f9fafb;">Téléphone</th>
+              <td style="padding: 10px; border: 1px solid #e5e7eb;">${escapeHtml(phone || "—")}</td>
             </tr>
             <tr>
               <th style="text-align: left; padding: 10px; border: 1px solid #e5e7eb; background: #f9fafb;">Message</th>
@@ -71,7 +71,7 @@ export async function POST(request: Request) {
       from: "info@solarstarenergy.ca",
       to: "info@solarstarenergy.ca",
       replyTo: email,
-      subject: `New Contact Form Submission from ${name}`,
+      subject: `Nouveau message de contact — ${name}`,
       html,
     });
 
@@ -79,14 +79,14 @@ export async function POST(request: Request) {
       const errMsg =
         typeof error === "object" && error !== null && "message" in error
           ? String((error as { message: unknown }).message)
-          : "Failed to send email.";
+          : "Échec de l’envoi du courriel.";
       return NextResponse.json({ error: errMsg }, { status: 500 });
     }
 
     return NextResponse.json({ success: true });
   } catch (err) {
     const message =
-      err instanceof Error ? err.message : "Failed to send message.";
+      err instanceof Error ? err.message : "Impossible d’envoyer le message.";
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
