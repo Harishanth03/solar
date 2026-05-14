@@ -21,30 +21,30 @@ type HeroSlide = {
 const slides: HeroSlide[] = [
   {
     id: 1,
-    title: "Power Your Home With Clean Solar Energy",
+    title: "Alimentez votre maison avec une énergie solaire propre",
     subtitle:
-      "Reduce electricity bills and switch to a smarter energy future with high-performance solar panels.",
+      "Réduisez vos factures d’électricité et passez à un avenir énergétique plus intelligent grâce à des panneaux solaires haute performance.",
     image: "/images/hero/hero-1.jpg",
-    primaryButton: { label: "Get Free Quote", href: "/quote" },
-    secondaryButton: { label: "View Services", href: "/services" },
+    primaryButton: { label: "Devis gratuit", href: "/contact" },
+    secondaryButton: { label: "Voir les services", href: "/services" },
   },
   {
     id: 2,
-    title: "Reliable Solar Systems For Every Roof",
+    title: "Des systèmes solaires fiables pour chaque toit",
     subtitle:
-      "From design to installation, we build long-lasting systems tailored to your home and business needs.",
+      "De la conception à l’installation, nous réalisons des systèmes durables adaptés aux besoins de votre maison et de votre entreprise.",
     image: "/images/hero/hero-2.jpg",
-    primaryButton: { label: "Start Your Project", href: "/contact" },
-    secondaryButton: { label: "Our Projects", href: "/projects" },
+    primaryButton: { label: "Démarrer votre projet", href: "/contact" },
+    secondaryButton: { label: "Nos services", href: "/services" },
   },
   {
     id: 3,
-    title: "Save More. Live Greener. Shine Brighter.",
+    title: "Économisez plus. Vivez au vert. Rayonnez plus fort.",
     subtitle:
-      "Join hundreds of families choosing solar power for lower costs, better comfort, and a cleaner tomorrow.",
+      "Rejoignez des centaines de familles qui choisissent l’énergie solaire pour réduire leurs coûts, améliorer leur confort et bâtir un avenir plus propre.",
     image: "/images/hero/hero-3.jpg",
-    primaryButton: { label: "Book Consultation", href: "/contact" },
-    secondaryButton: { label: "About Us", href: "/about" },
+    primaryButton: { label: "Réserver une consultation", href: "/contact" },
+    secondaryButton: { label: "À propos", href: "/about" },
   },
 ];
 
@@ -92,7 +92,7 @@ export default function HeroSlider() {
               <div className="mx-auto w-full max-w-6xl px-6 md:px-8 lg:px-12 md:pt-20">
                 <div className="max-w-2xl">
                   <p className="inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 md:px-4 text-xs md:text-sm font-medium text-white/90 backdrop-blur-sm">
-                    Trusted Solar Experts
+                    Experts en solaire de confiance
                   </p>
                   <h1 className="mt-4 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
                     {slide.title}
@@ -131,7 +131,7 @@ export default function HeroSlider() {
             className={`h-2.5 rounded-full transition-all duration-300 ${
               index === activeIndex ? "w-9 bg-white" : "w-2.5 bg-white/50"
             }`}
-            aria-label={`Go to slide ${index + 1}`}
+            aria-label={`Aller à la diapositive ${index + 1}`}
           />
         ))}
       </div>

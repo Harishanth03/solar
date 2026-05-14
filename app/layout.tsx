@@ -3,6 +3,8 @@ import { Syne, Inter } from "next/font/google";
 import "./globals.css";
 import ParticleBackground from "@/components/ui/ParticleBackground";
 import Navbar from "@/components/ui/Navbar";
+import Footer from "@/components/ui/Footer";
+import { LanguageProvider } from "@/components/providers/LanguageProvider";
 
 const syne = Syne({
   variable: "--font-syne",
@@ -17,8 +19,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Solar Star — Énergie Solaire",
-  description: "Solutions solaires pour particuliers et entreprises au Canada",
+  title: "Solar Star Énergie — Solutions solaires",
+  description:
+    "Solutions solaires pour particuliers et entreprises au Canada — installation, entretien et accompagnement.",
 };
 
 export default function RootLayout({
@@ -31,10 +34,13 @@ export default function RootLayout({
       lang="fr"
       className={`${syne.variable} ${inter.variable} antialiased`}
     >
-      <body className="min-h-screen overflow-x-hidden">
-        <Navbar />
-        <ParticleBackground />
-        {children}
+      <body className="min-h-screen overflow-x-hidden flex flex-col">
+        <LanguageProvider>
+          <Navbar />
+          <ParticleBackground />
+          <div className="flex-1">{children}</div>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

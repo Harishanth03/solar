@@ -108,8 +108,8 @@ export default function ProductShowcase() {
               </p>
             </div>
 
-            <Link href="/products" className="bg-orange-500 hover:bg-orange-400 text-white px-8 py-3 rounded-xl font-semibold shadow-lg shadow-orange-500/25 hover:shadow-orange-500/50 transition-all duration-300 w-fit flex items-center gap-2 group">
-              View All Products{" "}
+            <Link href="/services" className="bg-orange-500 hover:bg-orange-400 text-white px-8 py-3 rounded-xl font-semibold shadow-lg shadow-orange-500/25 hover:shadow-orange-500/50 transition-all duration-300 w-fit flex items-center gap-2 group">
+              Voir nos services{" "}
               <ChevronRight
                 size={18}
                 className="group-hover:translate-x-1 transition-transform"
