@@ -44,7 +44,7 @@ export default function Footer() {
                 className="text-lg font-semibold tracking-tight text-white"
                 style={{ fontFamily: "var(--font-syne)" }}
               >
-                Energie <span className="text-[#F97316]">Solestra</span>
+                Énergie <span className="text-[#F97316]">Solestra</span>
               </span>
             </Link>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-white/55">
@@ -77,7 +77,7 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/6 pt-8 text-center sm:flex-row sm:text-left">
           <p className="text-xs text-white/40">
-            © {year} Energie solestra. {t("footer.rights")}
+            © {year} Énergie solestra. {t("footer.rights")}
           </p>
           <p className="text-xs text-white/30" lang={locale}>
             {t("footer.climate")}
