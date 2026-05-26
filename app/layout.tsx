@@ -19,7 +19,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Solar Star Énergie — Solutions solaires",
+  title: "Énergie Solestra",
   description:
     "Solutions solaires pour particuliers et entreprises au Canada — installation, entretien et accompagnement.",
   other: {
