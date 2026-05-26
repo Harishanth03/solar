@@ -22,7 +22,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-24 border-t border-white/[0.08] bg-linear-to-b from-transparent to-[rgba(5,8,18,0.85)]">
+    <footer className="relative mt-24 border-t border-white/8 bg-linear-to-b from-transparent to-[rgba(5,8,18,0.85)]">
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-[#F97316]/35 to-transparent"
         aria-hidden
@@ -32,7 +32,7 @@ export default function Footer() {
           <div className="lg:col-span-5">
             <Link
               href="/"
-              className="group inline-flex items-center gap-3 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F97316]"
+              className="group inline-flex items-center gap-3 rounded-xl focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[#F97316]"
             >
               <div className="relative">
                 <div className="absolute -inset-1 rounded-full bg-linear-to-r from-[#F97316] to-[#38BDF8] opacity-35 blur-md transition group-hover:opacity-55" />
@@ -44,8 +44,7 @@ export default function Footer() {
                 className="text-lg font-semibold tracking-tight text-white"
                 style={{ fontFamily: "var(--font-syne)" }}
               >
-                Solar<span className="text-[#F97316]">Star</span>{" "}
-                <span className="text-white">Énergie</span>
+                Energie <span className="text-[#F97316]">Solestra</span>
               </span>
             </Link>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-white/55">
@@ -71,14 +70,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="mt-8 border-t border-white/10 pt-8 lg:col-span-3 lg:mt-0 lg:border-l lg:border-t-0 lg:border-white/[0.06] lg:pt-0 lg:pl-10">
+          <div className="mt-8 border-t border-white/10 pt-8 lg:col-span-3 lg:mt-0 lg:border-l lg:border-t-0 lg:border-white/6 lg:pt-0 lg:pl-10">
             <FooterLanguageSwitch />
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/[0.06] pt-8 text-center sm:flex-row sm:text-left">
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/6 pt-8 text-center sm:flex-row sm:text-left">
           <p className="text-xs text-white/40">
-            © {year} Solar Star Énergie. {t("footer.rights")}
+            © {year} Energie solestra. {t("footer.rights")}
           </p>
           <p className="text-xs text-white/30" lang={locale}>
             {t("footer.climate")}

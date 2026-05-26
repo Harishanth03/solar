@@ -14,6 +14,8 @@ import {
   CheckCircle2,
   Sparkles,
 } from "lucide-react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
+import { messages } from "@/lib/i18n";
 
 const containerVariants: Variants = {
   hidden: {},
@@ -40,24 +42,21 @@ const headingVariants: Variants = {
   },
 };
 
-const contactInfo = [
+const contactInfoData = [
   {
     icon: MapPin,
-    label: "Nous rendre visite",
     value: "4391 Avenue Eliot, Laval, QC H7W 5L5, Canada",
     accent: "from-orange-500/20 to-amber-400/5",
     iconColor: "text-orange-400",
   },
   {
     icon: Phone,
-    label: "Nous appeler",
     value: "+1 514 885 8466",
     accent: "from-sky-500/20 to-blue-400/5",
     iconColor: "text-sky-400",
   },
   {
     icon: Mail,
-    label: "Nous écrire",
     value: "info@solarstarenergy.ca",
     accent: "from-emerald-500/20 to-green-400/5",
     iconColor: "text-emerald-400",
@@ -65,6 +64,21 @@ const contactInfo = [
 ];
 
 export default function ContactSection() {
+  const { locale } = useLanguage();
+  const currentMessages = messages[locale];
+
+  const contactInfo = contactInfoData.map((item, idx) => {
+    let label = "";
+    if (idx === 0) label = currentMessages.contactSection.info.visit;
+    else if (idx === 1) label = currentMessages.contactSection.info.call;
+    else if (idx === 2) label = currentMessages.contactSection.info.write;
+
+    return {
+      ...item,
+      label,
+    };
+  });
+
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-60px", amount: 0.1 });
 
@@ -104,7 +118,7 @@ export default function ContactSection() {
       if (!response.ok || !data.success) {
         setErrorMessage(
           data.error ||
-            "Impossible d’envoyer votre message pour le moment. Veuillez réessayer.",
+            currentMessages.contactSection.form.error,
         );
         return;
       }
@@ -113,7 +127,7 @@ export default function ContactSection() {
       setFormState({ name: "", email: "", phone: "", message: "" });
     } catch {
       setErrorMessage(
-        "Impossible d’envoyer votre message pour le moment. Veuillez réessayer.",
+        currentMessages.contactSection.form.error,
       );
     } finally {
       setIsSubmitting(false);
@@ -148,19 +162,18 @@ export default function ContactSection() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400 text-xs font-medium mb-5 tracking-widest uppercase">
             <MessageSquare className="w-3 h-3" />
-            Contactez-nous
+            {currentMessages.contactSection.badge}
           </span>
 
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-tight">
-            Lancez votre{" "}
+            {currentMessages.contactSection.titlePart1}
             <span className="bg-linear-to-r from-orange-400 to-amber-300 bg-clip-text text-transparent">
-              projet solaire
+              {currentMessages.contactSection.titlePart2}
             </span>
           </h2>
 
           <p className="text-slate-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
-            Une question ou prêt à passer au solaire ? Écrivez à notre équipe : nous vous répondons
-            sous 24 heures.
+            {currentMessages.contactSection.subtitle}
           </p>
 
           <div className="mx-auto mt-6 flex items-center justify-center gap-3">
@@ -213,11 +226,10 @@ export default function ContactSection() {
               <Sparkles className="w-5 h-5 text-orange-400 mt-0.5 shrink-0" />
               <div>
                 <p className="text-white font-semibold text-sm mb-1">
-                  Garantie de réponse rapide
+                  {currentMessages.contactSection.guaranteeTitle}
                 </p>
                 <p className="text-slate-400 text-xs leading-relaxed">
-                  Notre équipe répond à chaque demande sous 24 heures. Pour les urgences, appelez-nous
-                  directement.
+                  {currentMessages.contactSection.guaranteeDesc}
                 </p>
               </div>
             </motion.div>
@@ -239,7 +251,7 @@ export default function ContactSection() {
                       className="text-xs text-slate-400 uppercase tracking-widest flex items-center gap-1.5"
                     >
                       <User className="w-3 h-3" />
-                      Nom complet
+                      {currentMessages.contactSection.form.name}
                     </label>
                     <input
                       id="contact-name"
@@ -248,7 +260,7 @@ export default function ContactSection() {
                       value={formState.name}
                       onChange={handleChange}
                       required
-                      placeholder="Jean Dupont"
+                      placeholder={currentMessages.contactSection.form.namePlaceholder}
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/25 transition-all duration-300"
                     />
                   </div>
@@ -259,7 +271,7 @@ export default function ContactSection() {
                       className="text-xs text-slate-400 uppercase tracking-widest flex items-center gap-1.5"
                     >
                       <Mail className="w-3 h-3" />
-                      Courriel
+                      {currentMessages.contactSection.form.email}
                     </label>
                     <input
                       id="contact-email"
@@ -268,7 +280,7 @@ export default function ContactSection() {
                       value={formState.email}
                       onChange={handleChange}
                       required
-                      placeholder="vous@exemple.com"
+                      placeholder={currentMessages.contactSection.form.emailPlaceholder}
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/25 transition-all duration-300"
                     />
                   </div>
@@ -280,7 +292,7 @@ export default function ContactSection() {
                     className="text-xs text-slate-400 uppercase tracking-widest flex items-center gap-1.5"
                   >
                     <Phone className="w-3 h-3" />
-                    Téléphone
+                    {currentMessages.contactSection.form.phone}
                   </label>
                   <input
                     id="contact-phone"
@@ -288,7 +300,7 @@ export default function ContactSection() {
                     name="phone"
                     value={formState.phone}
                     onChange={handleChange}
-                    placeholder="5148858466"
+                    placeholder={currentMessages.contactSection.form.phonePlaceholder}
                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/25 transition-all duration-300"
                   />
                 </div>
@@ -299,7 +311,7 @@ export default function ContactSection() {
                     className="text-xs text-slate-400 uppercase tracking-widest flex items-center gap-1.5"
                   >
                     <MessageSquare className="w-3 h-3" />
-                    Message
+                    {currentMessages.contactSection.form.message}
                   </label>
                   <textarea
                     id="contact-message"
@@ -308,7 +320,7 @@ export default function ContactSection() {
                     onChange={handleChange}
                     required
                     rows={4}
-                    placeholder="Parlez-nous de votre projet solaire…"
+                    placeholder={currentMessages.contactSection.form.messagePlaceholder}
                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/25 transition-all duration-300 resize-none"
                   />
                 </div>
@@ -321,17 +333,17 @@ export default function ContactSection() {
                   {isSubmitting ? (
                     <>
                       <Send className="w-4 h-4" />
-                      Envoi en cours…
+                      {currentMessages.contactSection.form.sending}
                     </>
                   ) : isSubmitted ? (
                     <>
                       <CheckCircle2 className="w-4 h-4" />
-                      Message envoyé !
+                      {currentMessages.contactSection.form.sent}
                     </>
                   ) : (
                     <>
                       <Send className="w-4 h-4" />
-                      Envoyer le message
+                      {currentMessages.contactSection.form.send}
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                     </>
                   )}
@@ -341,8 +353,7 @@ export default function ContactSection() {
                 ) : null}
 
                 <p className="text-center text-xs text-slate-600">
-                  Nous respectons votre vie privée. Vos informations ne sont jamais partagées avec des
-                  tiers.
+                  {currentMessages.contactSection.form.privacy}
                 </p>
               </div>
             </form>

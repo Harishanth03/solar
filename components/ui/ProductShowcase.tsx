@@ -3,24 +3,29 @@
 import { motion } from "framer-motion";
 import { MapPin, ChevronRight, Zap } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "@/components/providers/LanguageProvider";
+import { messages } from "@/lib/i18n";
 
 export default function ProductShowcase() {
+  const { locale } = useLanguage();
+  const currentMessages = messages[locale];
+
   return (
     <section className="relative py-24 md:py-32 px-6 md:px-8 lg:px-12 overflow-hidden z-10">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400 text-xs font-medium mb-5 tracking-widest uppercase">
             <Zap className="w-3 h-3" />
-            Product Spotlight
+            {currentMessages.productShowcase.badge}
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-tight">
-            Featured{" "}
+            {currentMessages.productShowcase.titlePart1}
             <span className="bg-linear-to-r from-orange-400 to-amber-300 bg-clip-text text-transparent">
-              Product
+              {currentMessages.productShowcase.titlePart2}
             </span>
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed mb-6">
-            Explore one of our most impressive large-scale solar installations, showcasing our capability and commitment to excellence.
+            {currentMessages.productShowcase.subtitle}
           </p>
           <div className="mx-auto flex items-center justify-center gap-3">
             <div className="h-px w-12 bg-linear-to-r from-transparent to-orange-500/60 rounded-full" />
@@ -53,17 +58,17 @@ export default function ProductShowcase() {
             className="p-8 lg:p-12 flex flex-col justify-center"
           >
             <div className="inline-block px-3 py-1 rounded-full bg-orange-500/20 border border-orange-500/30 text-orange-400 font-bold text-xs w-fit mb-6 uppercase tracking-wider">
-              Featured Product
+              {currentMessages.productShowcase.featuredBadge}
             </div>
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-3">
-              Beaumont Industrial Complex
+              {currentMessages.productShowcase.projectTitle}
             </h3>
             <div className="flex items-center gap-1.5 text-slate-400 text-sm mb-6">
               <MapPin size={16} className="text-sky-400" />
               <span>Saint-Jean-sur-Richelieu, QC</span>
             </div>
             <p className="text-slate-300 leading-relaxed mb-8">
-              A large-scale commercial rooftop solar installation completed for a leading manufacturing facility. This state-of-the-art system is designed to offset their massive energy consumption and significantly reduce operational costs.
+              {currentMessages.productShowcase.description}
             </p>
 
             <div className="grid grid-cols-2 gap-4 mb-8">
@@ -72,13 +77,13 @@ export default function ProductShowcase() {
                   320 kW
                 </div>
                 <div className="text-xs text-slate-400 uppercase tracking-wide font-medium">
-                  Installed
+                  {currentMessages.productShowcase.specInstalledLabel}
                 </div>
               </div>
               <div className="bg-black/20 border border-white/5 p-5 rounded-xl hover:bg-black/30 transition-colors">
                 <div className="text-2xl font-bold text-white mb-1">58 T</div>
                 <div className="text-xs text-slate-400 uppercase tracking-wide font-medium">
-                  CO₂ Avoided/yr
+                  {currentMessages.productShowcase.specAvoidedLabel}
                 </div>
               </div>
               <div className="bg-black/20 border border-white/5 p-5 rounded-xl hover:bg-black/30 transition-colors">
@@ -86,15 +91,15 @@ export default function ProductShowcase() {
                   $54,000
                 </div>
                 <div className="text-xs text-slate-400 uppercase tracking-wide font-medium">
-                  Saved/yr
+                  {currentMessages.productShowcase.specSavedLabel}
                 </div>
               </div>
               <div className="bg-black/20 border border-white/5 p-5 rounded-xl hover:bg-black/30 transition-colors">
                 <div className="text-2xl font-bold text-sky-400 mb-1">
-                  7 Years
+                  {currentMessages.productShowcase.specRoiValue}
                 </div>
                 <div className="text-xs text-slate-400 uppercase tracking-wide font-medium">
-                  ROI Time
+                  {currentMessages.productShowcase.specRoiLabel}
                 </div>
               </div>
             </div>
@@ -104,12 +109,12 @@ export default function ProductShowcase() {
                 MB
               </div>
               <p className="italic text-slate-300 text-sm">
-                &ldquo;The transformation of our energy footprint has been remarkable. Solar-Star delivered perfectly on schedule.&rdquo;
+                &ldquo;{currentMessages.productShowcase.testimonial}&rdquo;
               </p>
             </div>
 
             <Link href="/services" className="bg-orange-500 hover:bg-orange-400 text-white px-8 py-3 rounded-xl font-semibold shadow-lg shadow-orange-500/25 hover:shadow-orange-500/50 transition-all duration-300 w-fit flex items-center gap-2 group">
-              Voir nos services{" "}
+              {currentMessages.productShowcase.button}{" "}
               <ChevronRight
                 size={18}
                 className="group-hover:translate-x-1 transition-transform"

@@ -53,7 +53,7 @@ export default function Navbar() {
               </div>
               <span className="text-xl font-semibold tracking-tight bg-linear-to-r from-white to-white/80 bg-clip-text text-transparent">
                 {/* <span className="text-[#F97316]">Star</span>{" "} */}
-                <span className="text-white/90">energiesolestra</span>
+                Energie <span className="text-[#F97316]">Solestra</span>
               </span>
             </Link>
 

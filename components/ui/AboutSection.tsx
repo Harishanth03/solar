@@ -4,33 +4,13 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView, type Variants } from "framer-motion";
 import { ArrowRight, CheckCircle2, Lightbulb, Shield, Users } from "lucide-react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
+import { messages } from "@/lib/i18n";
 
-const highlights = [
-  {
-    icon: Lightbulb,
-    title: "Une expertise solaire concrète",
-    description:
-      "Au cours de la dernière année, nous avons mis l’accent sur des solutions solaires intelligentes, fiables et efficaces pour les besoins du quotidien.",
-  },
-  {
-    icon: Shield,
-    title: "La qualité avant tout",
-    description:
-      "Chaque projet est planifié avec la sécurité, la performance à long terme et un travail soigné au centre de nos priorités.",
-  },
-  {
-    icon: Users,
-    title: "Une approche centrée sur le client",
-    description:
-      "Nous écoutons d’abord, guidons clairement et livrons des systèmes alignés sur les objectifs et le budget de chaque client.",
-  },
-];
-
-const values = [
-  "Communication transparente de la consultation à la livraison",
-  "Un accompagnement fiable avant, pendant et après l’installation",
-  "Des solutions énergétiques pensées pour des économies durables",
-  "Un service simple et sans stress pour les particuliers et les entreprises",
+const highlightIcons = [
+  { icon: Lightbulb },
+  { icon: Shield },
+  { icon: Users },
 ];
 
 const containerVariants: Variants = {
@@ -69,6 +49,17 @@ export default function AboutSection({
   compactHeader,
   standaloneTitle,
 }: AboutSectionProps) {
+  const { locale } = useLanguage();
+  const currentMessages = messages[locale];
+
+  const highlights = highlightIcons.map((item, idx) => ({
+    icon: item.icon,
+    title: currentMessages.aboutSection.highlights[idx].title,
+    description: currentMessages.aboutSection.highlights[idx].description,
+  }));
+
+  const values = currentMessages.aboutSection.commitments;
+
   const topRef = useRef<HTMLElement>(null);
   const highlightsRef = useRef<HTMLElement>(null);
   const valuesRef = useRef<HTMLElement>(null);
@@ -87,7 +78,7 @@ export default function AboutSection({
         }`}
       >
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-16 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-orange-500/10 rounded-full blur-3xl" />
+          <div className="absolute top-16 left-1/2 -translate-x-1/2 w-125 h-62.5 bg-orange-500/10 rounded-full blur-3xl" />
         </div>
 
         <motion.div
@@ -97,20 +88,19 @@ export default function AboutSection({
           className="relative max-w-3xl"
         >
           <span className="inline-flex items-center px-4 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400 text-xs font-medium mb-6 uppercase tracking-widest">
-            À propos
+            {currentMessages.aboutSection.badge}
           </span>
           <TitleTag
             className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-5"
             style={{ fontFamily: "var(--font-syne)" }}
           >
-            Bâtir un avenir solaire{" "}
+            {currentMessages.aboutSection.titlePart1}
             <span className="bg-linear-to-r from-orange-400 to-amber-300 bg-clip-text text-transparent">
-              plus intelligent
+              {currentMessages.aboutSection.titlePart2}
             </span>
           </TitleTag>
           <p className="text-slate-400 text-base sm:text-lg leading-relaxed">
-            Nous sommes une équipe solaire en croissance avec environ un an d’expérience sur le terrain,
-            qui aide les foyers et les entreprises à adopter des solutions énergétiques plus propres et plus efficaces.
+            {currentMessages.aboutSection.subtitle}
           </p>
         </motion.div>
       </section>
@@ -154,11 +144,10 @@ export default function AboutSection({
             className="text-3xl sm:text-4xl font-bold mb-5 text-center"
             style={{ fontFamily: "var(--font-syne)" }}
           >
-            Nos engagements
+            {currentMessages.aboutSection.commitmentsTitle}
           </h3>
           <p className="text-slate-400 text-center max-w-2xl mx-auto mb-8">
-            Dès notre première année, nous avons bâti notre réputation sur la confiance, la constance et des
-            résultats concrets qui facilitent l’adoption de l’énergie propre.
+            {currentMessages.aboutSection.commitmentsSubtitle}
           </p>
 
           <motion.div
@@ -184,7 +173,7 @@ export default function AboutSection({
               href="/contact"
               className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-orange-500/25 hover:shadow-orange-500/50"
             >
-              Parler à notre équipe
+              {currentMessages.aboutSection.button}
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

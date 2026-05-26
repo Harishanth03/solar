@@ -1,56 +1,30 @@
 "use client";
-
+ 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-
-type HeroSlide = {
-  id: number;
-  title: string;
-  subtitle: string;
-  image: string;
-  primaryButton: {
-    label: string;
-    href: string;
-  };
-  secondaryButton: {
-    label: string;
-    href: string;
-  };
-};
-
-const slides: HeroSlide[] = [
-  {
-    id: 1,
-    title: "Alimentez votre maison avec une énergie solaire propre",
-    subtitle:
-      "Réduisez vos factures d’électricité et passez à un avenir énergétique plus intelligent grâce à des panneaux solaires haute performance.",
-    image: "/images/hero/hero-1.jpg",
-    primaryButton: { label: "Soumission", href: "/contact" },
-    secondaryButton: { label: "Voir les services", href: "/services" },
-  },
-  {
-    id: 2,
-    title: "Des systèmes solaires fiables pour chaque toit",
-    subtitle:
-      "De la conception à l’installation, nous réalisons des systèmes durables adaptés aux besoins de votre maison et de votre entreprise.",
-    image: "/images/hero/hero-2.jpg",
-    primaryButton: { label: "Démarrer votre projet", href: "/contact" },
-    secondaryButton: { label: "Nos services", href: "/services" },
-  },
-  {
-    id: 3,
-    title: "Économisez plus. Vivez au vert. Rayonnez plus fort.",
-    subtitle:
-      "Rejoignez des centaines de familles qui choisissent l’énergie solaire pour réduire leurs coûts, améliorer leur confort et bâtir un avenir plus propre.",
-    image: "/images/hero/hero-3.jpg",
-    primaryButton: { label: "Réserver une consultation", href: "/contact" },
-    secondaryButton: { label: "À propos", href: "/about" },
-  },
-];
-
+import { useLanguage } from "@/components/providers/LanguageProvider";
+import { messages } from "@/lib/i18n";
+ 
 const AUTOPLAY_MS = 5000;
 
 export default function HeroSlider() {
+  const { locale } = useLanguage();
+  const currentMessages = messages[locale];
+  const slides = currentMessages.hero.slides.map((slide, idx) => ({
+    id: idx + 1,
+    title: slide.title,
+    subtitle: slide.subtitle,
+    image: `/images/hero/hero-${idx + 1}.jpg`,
+    primaryButton: {
+      label: slide.primary,
+      href: "/contact",
+    },
+    secondaryButton: {
+      label: slide.secondary,
+      href: idx === 2 ? "/about" : "/services",
+    },
+  }));
+
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -59,7 +33,7 @@ export default function HeroSlider() {
     }, AUTOPLAY_MS);
 
     return () => window.clearInterval(intervalId);
-  }, []);
+  }, [slides.length]);
 
   return (
     <section className="relative h-dvh w-screen overflow-hidden bg-[#0a0f1e]">
@@ -92,7 +66,7 @@ export default function HeroSlider() {
               <div className="mx-auto w-full max-w-6xl px-6 md:px-8 lg:px-12 md:pt-20">
                 <div className="max-w-2xl">
                   <p className="inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 md:px-4 text-xs md:text-sm font-medium text-white/90 backdrop-blur-sm">
-                    Experts en solaire de confiance
+                    {currentMessages.hero.badge}
                   </p>
                   <h1 className="mt-4 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
                     {slide.title}
@@ -131,7 +105,7 @@ export default function HeroSlider() {
             className={`h-2.5 rounded-full transition-all duration-300 ${
               index === activeIndex ? "w-9 bg-white" : "w-2.5 bg-white/50"
             }`}
-            aria-label={`Aller à la diapositive ${index + 1}`}
+            aria-label={`${currentMessages.hero.ariaLabel} ${index + 1}`}
           />
         ))}
       </div>
