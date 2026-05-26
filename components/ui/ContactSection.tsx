@@ -62,13 +62,6 @@ const contactInfo = [
     accent: "from-emerald-500/20 to-green-400/5",
     iconColor: "text-emerald-400",
   },
-  {
-    icon: Clock,
-    label: "Heures d’ouverture",
-    value: "24 h / 7 j",
-    accent: "from-violet-500/20 to-purple-400/5",
-    iconColor: "text-violet-400",
-  },
 ];
 
 export default function ContactSection() {

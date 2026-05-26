@@ -22,6 +22,7 @@ export default function Navbar() {
     () => [
       { name: t("nav.home"), href: "/" },
       { name: t("nav.services"), href: "/services" },
+      { name: t("nav.subventions"), href: "/subventions" },
       { name: t("nav.about"), href: "/about" },
       { name: t("nav.contact"), href: "/contact" },
     ],
@@ -51,8 +52,8 @@ export default function Navbar() {
                 </div>
               </div>
               <span className="text-xl font-semibold tracking-tight bg-linear-to-r from-white to-white/80 bg-clip-text text-transparent">
-                Solar<span className="text-[#F97316]">Star</span>{" "}
-                <span className="text-white/90">Énergie</span>
+                {/* <span className="text-[#F97316]">Star</span>{" "} */}
+                <span className="text-white/90">energiesolestra</span>
               </span>
             </Link>
 
