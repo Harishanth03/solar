@@ -11,6 +11,7 @@ type MessageTree = {
   nav: {
     home: string;
     services: string;
+    subventions: string;
     about: string;
     contact: string;
     quote: string;
@@ -20,6 +21,7 @@ type MessageTree = {
     explore: string;
     home: string;
     services: string;
+    subventions: string;
     about: string;
     contact: string;
     rights: string;
@@ -33,9 +35,10 @@ export const messages: Record<Locale, MessageTree> = {
     nav: {
       home: "Accueil",
       services: "Services",
+      subventions: "Subventions",
       about: "À propos",
       contact: "Contact",
-      quote: "Devis gratuit",
+      quote: "Soumission",
     },
     footer: {
       tagline:
@@ -43,6 +46,7 @@ export const messages: Record<Locale, MessageTree> = {
       explore: "Navigation",
       home: "Accueil",
       services: "Services",
+      subventions: "Subventions",
       about: "À propos",
       contact: "Contact",
       rights: "Tous droits réservés.",
@@ -54,9 +58,10 @@ export const messages: Record<Locale, MessageTree> = {
     nav: {
       home: "Home",
       services: "Services",
+      subventions: "Grants",
       about: "About",
       contact: "Contact",
-      quote: "Free quote",
+      quote: "Get a Quote",
     },
     footer: {
       tagline:
@@ -64,6 +69,7 @@ export const messages: Record<Locale, MessageTree> = {
       explore: "Explore",
       home: "Home",
       services: "Services",
+      subventions: "Grants",
       about: "About",
       contact: "Contact",
       rights: "All rights reserved.",

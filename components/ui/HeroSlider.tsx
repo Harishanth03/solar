@@ -25,7 +25,7 @@ const slides: HeroSlide[] = [
     subtitle:
       "Réduisez vos factures d’électricité et passez à un avenir énergétique plus intelligent grâce à des panneaux solaires haute performance.",
     image: "/images/hero/hero-1.jpg",
-    primaryButton: { label: "Devis gratuit", href: "/contact" },
+    primaryButton: { label: "Soumission", href: "/contact" },
     secondaryButton: { label: "Voir les services", href: "/services" },
   },
   {

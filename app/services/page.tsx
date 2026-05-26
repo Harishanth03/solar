@@ -71,7 +71,7 @@ const steps = [
   {
     number: "03",
     title: "Proposition sur mesure",
-    description: "Recevez un devis détaillé avec un retour sur investissement estimé.",
+    description: "Recevez une soumission détaillée avec un retour sur investissement estimé.",
   },
   {
     number: "04",
@@ -391,7 +391,7 @@ export default function ServicesPage() {
             </span>
           </h2>
           <p className="relative text-slate-400 mb-8 text-base sm:text-lg max-w-xl mx-auto">
-            Obtenez votre devis gratuit dès aujourd’hui et découvrez combien vous pourriez économiser
+            Obtenez votre soumission gratuite dès aujourd’hui et découvrez combien vous pourriez économiser
             chaque année avec le solaire.
           </p>
 
@@ -400,7 +400,7 @@ export default function ServicesPage() {
               href="/contact"
               className="bg-orange-500 hover:bg-orange-400 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-orange-500/25 hover:shadow-orange-500/50"
             >
-              Demander un devis
+              Demander une soumission
             </Link>
             <Link
               href="/contact"
