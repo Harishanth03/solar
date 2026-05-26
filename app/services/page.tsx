@@ -15,98 +15,12 @@ import {
   MapPin,
   Shield,
 } from "lucide-react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
+import { messages } from "@/lib/i18n";
 
-// ── Data ────────────────────────────────────────────────────────────────────
-
-const services = [
-  {
-    icon: Home,
-    title: "Installation résidentielle",
-    description:
-      "Transformez votre maison en centrale solaire. Nos experts conçoivent un système adapté à votre toit et à vos besoins énergétiques précis.",
-  },
-  {
-    icon: Building2,
-    title: "Installation commerciale",
-    description:
-      "Réduisez vos coûts d’exploitation grâce à des installations solaires à grande échelle conçues pour les entreprises et les industries de toutes tailles.",
-  },
-  {
-    icon: Wrench,
-    title: "Entretien et réparations",
-    description:
-      "Maintenez vos panneaux à leur meilleur rendement grâce à des entretiens réguliers et à une équipe de réparation à réponse rapide.",
-  },
-  {
-    icon: BarChart3,
-    title: "Audit énergétique",
-    description:
-      "Obtenez une analyse complète et gratuite de votre consommation et découvrez exactement combien vous pourriez économiser avec le solaire.",
-  },
-  {
-    icon: Battery,
-    title: "Stockage par batteries",
-    description:
-      "Stockez l’énergie solaire produite le jour pour l’utiliser la nuit ou lorsque le réseau est indisponible.",
-  },
-  {
-    icon: Zap,
-    title: "Raccordement au réseau",
-    description:
-      "Nous gérons pour vous tous les permis, inspections et raccordements au réseau — sans tracas.",
-  },
-];
-
-const steps = [
-  {
-    number: "01",
-    title: "Consultation gratuite",
-    description: "Échangez avec nos experts pour définir vos besoins et vos objectifs énergétiques.",
-  },
-  {
-    number: "02",
-    title: "Visite technique",
-    description: "Une visite pour évaluer votre toit, l’ombrage et le potentiel solaire.",
-  },
-  {
-    number: "03",
-    title: "Proposition sur mesure",
-    description: "Recevez une soumission détaillée avec un retour sur investissement estimé.",
-  },
-  {
-    number: "04",
-    title: "Installation",
-    description: "Notre équipe certifiée installe votre système en 3 à 5 jours ouvrables.",
-  },
-  {
-    number: "05",
-    title: "Mise en service et suivi",
-    description: "Mise en service, formation et surveillance continue de la production.",
-  },
-];
-
-const whyUs = [
-  {
-    icon: Shield,
-    label: "Certifié RBQ",
-    description: "Entrepreneurs licenciés par la Régie du bâtiment du Québec.",
-  },
-  {
-    icon: CheckCircle2,
-    label: "Garantie 10 ans",
-    description: "Garantie complète sur la main-d’œuvre et tout l’équipement installé.",
-  },
-  {
-    icon: MapPin,
-    label: "Équipe locale au Québec",
-    description: "Une équipe qui connaît le climat et les programmes d’aide régionaux.",
-  },
-  {
-    icon: Clock,
-    label: "Installation en 3 à 5 jours",
-    description: "De la première visite à la mise en service, en moins d’une semaine.",
-  },
-];
+// ── Icons Mapping ───────────────────────────────────────────────────────────
+const serviceIcons = [Home, Building2, Wrench, BarChart3, Battery, Zap];
+const whyUsIcons = [Shield, CheckCircle2, MapPin, Clock];
 
 // ── Animation variants ───────────────────────────────────────────────────────
 
@@ -115,7 +29,7 @@ const fadeUp = {
   show: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: i * 0.1 },
+    transition: { duration: 0.5, delay: (i as number) * 0.1 },
   }),
 };
 
@@ -127,6 +41,23 @@ const fadeLeft = {
 // ── Page ────────────────────────────────────────────────────────────────────
 
 export default function ServicesPage() {
+  const { locale } = useLanguage();
+  const currentMessages = messages[locale];
+
+  const services = serviceIcons.map((Icon, idx) => ({
+    icon: Icon,
+    title: currentMessages.servicesSection.items[idx].title,
+    description: currentMessages.servicesSection.items[idx].description,
+  }));
+
+  const steps = currentMessages.servicesPage.processSteps;
+
+  const whyUs = whyUsIcons.map((Icon, idx) => ({
+    icon: Icon,
+    label: currentMessages.servicesPage.whyUs[idx].label,
+    description: currentMessages.servicesPage.whyUs[idx].description,
+  }));
+
   return (
     <main className="min-h-screen text-white" style={{ fontFamily: "var(--font-inter)" }}>
 
@@ -142,9 +73,11 @@ export default function ServicesPage() {
           animate="show"
           className="flex items-center gap-2 text-xs text-white/40 mb-5"
         >
-          <Link href="/" className="hover:text-orange-400 transition-colors">Accueil</Link>
+          <Link href="/" className="hover:text-orange-400 transition-colors">
+            {currentMessages.servicesPage.breadcrumbHome}
+          </Link>
           <ChevronRight className="w-3 h-3" />
-          <span className="text-white/60">Services</span>
+          <span className="text-white/60">{currentMessages.servicesPage.breadcrumbCurrent}</span>
         </motion.div>
 
         {/* Badge */}
@@ -155,7 +88,7 @@ export default function ServicesPage() {
           custom={1}
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400 text-xs font-medium mb-5 tracking-widest uppercase"
         >
-          Nos services
+          {currentMessages.servicesPage.badge}
         </motion.span>
 
         {/* Heading */}
@@ -167,9 +100,9 @@ export default function ServicesPage() {
           className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight max-w-3xl mb-4"
           style={{ fontFamily: "var(--font-syne)" }}
         >
-          Des solutions solaires{" "}
+          {currentMessages.servicesPage.titlePart1}
           <span className="bg-linear-to-r from-orange-400 to-amber-300 bg-clip-text text-transparent">
-            pensées pour vous
+            {currentMessages.servicesPage.titlePart2}
           </span>
         </motion.h1>
 
@@ -181,8 +114,7 @@ export default function ServicesPage() {
           custom={3}
           className="text-slate-400 max-w-xl text-base sm:text-lg leading-relaxed"
         >
-          De l’audit énergétique à la mise en service, nous vous guidons à chaque étape vers une
-          énergie propre, fiable et abordable.
+          {currentMessages.servicesPage.subtitle}
         </motion.p>
       </section>
 
@@ -199,7 +131,7 @@ export default function ServicesPage() {
             className="text-3xl sm:text-4xl font-bold text-white"
             style={{ fontFamily: "var(--font-syne)" }}
           >
-            Ce que nous offrons
+            {currentMessages.servicesPage.gridTitle}
           </h2>
           <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-linear-to-r from-orange-500 to-amber-400" />
         </motion.div>
@@ -237,7 +169,7 @@ export default function ServicesPage() {
 
                 {/* Link */}
                 <span className="text-orange-400 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all duration-200">
-                  En savoir plus <ChevronRight className="w-4 h-4" />
+                  {currentMessages.servicesPage.gridLink} <ChevronRight className="w-4 h-4" />
                 </span>
               </motion.div>
             );
@@ -259,10 +191,10 @@ export default function ServicesPage() {
               className="text-3xl sm:text-4xl font-bold text-white"
               style={{ fontFamily: "var(--font-syne)" }}
             >
-              Comment ça fonctionne
+              {currentMessages.servicesPage.processTitle}
             </h2>
             <p className="text-slate-400 mt-3 max-w-xl mx-auto text-sm sm:text-base">
-              Un processus simple et transparent — du premier appel à votre première facture d’énergie réduite.
+              {currentMessages.servicesPage.processSubtitle}
             </p>
             <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-linear-to-r from-orange-500 to-amber-400" />
           </motion.div>
@@ -331,7 +263,7 @@ export default function ServicesPage() {
               className="text-3xl sm:text-4xl font-bold text-white"
               style={{ fontFamily: "var(--font-syne)" }}
             >
-              Pourquoi nous choisir
+              {currentMessages.servicesPage.whyTitle}
             </h2>
             <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-linear-to-r from-orange-500 to-amber-400" />
           </motion.div>
@@ -385,14 +317,13 @@ export default function ServicesPage() {
             className="relative text-3xl sm:text-4xl font-bold text-white mb-4"
             style={{ fontFamily: "var(--font-syne)" }}
           >
-            Prêt à passer à{" "}
+            {currentMessages.servicesPage.ctaTitlePart1}
             <span className="bg-linear-to-r from-orange-400 to-amber-300 bg-clip-text text-transparent">
-              l’énergie solaire ?
+              {currentMessages.servicesPage.ctaTitlePart2}
             </span>
           </h2>
           <p className="relative text-slate-400 mb-8 text-base sm:text-lg max-w-xl mx-auto">
-            Obtenez votre soumission gratuite dès aujourd’hui et découvrez combien vous pourriez économiser
-            chaque année avec le solaire.
+            {currentMessages.servicesPage.ctaSubtitle}
           </p>
 
           <div className="relative flex flex-wrap justify-center gap-4">
@@ -400,13 +331,13 @@ export default function ServicesPage() {
               href="/contact"
               className="bg-orange-500 hover:bg-orange-400 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-orange-500/25 hover:shadow-orange-500/50"
             >
-              Demander une soumission
+              {currentMessages.servicesPage.ctaButton1}
             </Link>
             <Link
               href="/contact"
               className="border border-white/20 hover:border-white/40 bg-white/5 hover:bg-white/10 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300"
             >
-              Nous contacter
+              {currentMessages.servicesPage.ctaButton2}
             </Link>
           </div>
         </motion.div>

@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   title: "Solar Star Énergie — Solutions solaires",
   description:
     "Solutions solaires pour particuliers et entreprises au Canada — installation, entretien et accompagnement.",
+  other: {
+    google: "notranslate",
+  },
 };
 
 export default function RootLayout({
@@ -32,6 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
+      translate="no"
       className={`${syne.variable} ${inter.variable} antialiased`}
     >
       <body className="min-h-screen overflow-x-hidden flex flex-col">
