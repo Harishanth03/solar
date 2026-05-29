@@ -68,8 +68,8 @@ export async function POST(request: Request) {
     `;
 
     const { error } = await resend.emails.send({
-      from: "info@solarstarenergy.ca",
-      to: "info@solarstarenergy.ca",
+      from: "info@energiesolestra.ca",
+      to: "info@energiesolestra.ca",
       replyTo: email,
       subject: `Nouveau message de contact — ${name}`,
       html,
