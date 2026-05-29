@@ -57,7 +57,7 @@ const contactInfoData = [
   },
   {
     icon: Mail,
-    value: "info@solarstarenergy.ca",
+    value: "info@energiesolestra.ca",
     accent: "from-emerald-500/20 to-green-400/5",
     iconColor: "text-emerald-400",
   },
